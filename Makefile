@@ -55,17 +55,10 @@ docker_build:
 	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(DOCKER_IMAGE):latest
 
 docker_push:
-	# Tag image also for CERN GitLab container registry
-	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(CERN_IMAGE):$(DOCKER_TAG)
-	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG) $(CERN_IMAGE):latest
 
 	# Push to DockerHub
 	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
 	docker push $(DOCKER_IMAGE):latest
-
-	# Push to CERN GitLab container registry
-	docker push $(CERN_IMAGE):$(DOCKER_TAG)
-	docker push $(CERN_IMAGE):latest
 
 output:
 	@echo Docker Image: $(DOCKER_IMAGE):$(DOCKER_TAG)
